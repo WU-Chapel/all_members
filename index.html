@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WIGWE UNIVERSITY CHAPEL</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f2f7ff;
+      padding: 1rem;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      background: white;
+      margin: 2rem auto;
+      padding: 2rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin: 15px 0 5px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 3px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 100%;
+      background: #2c3e50;
+      color: white;
+      padding: 12px;
+      margin-top: 20px;
+      border: none;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1a242f;
+    }
+
+    .success {
+      color: green;
+      text-align: center;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 style="color: rgb(61, 44, 158);">WIGWE UNIVERSITY CHAPEL</h2>
+    <h3 style="text-align: center; color: rgb(231, 71, 27);">Where Academic Excellence Meets Spiritual Fire</h3>
+    <h5 style="text-align: center; color: rgb(231, 71, 27);">Membership Records System</h5>
+    <form id="fellowshipForm">
+      <label>First Name</label>
+      <input type="text" name="First Name" required />
+
+      <label>Middle Name</label>
+      <input type="text" name="Middle Name" />
+
+      <label>Last Name (Surname)</label>
+      <input type="text" name="Last Name" required />
+
+      <label>Department/Program</label>
+      <input type="text" name="Department" required />
+
+      <label>Date of Birth</label>
+      <input type="date" name="Date of Birth" required />
+
+      <label>Unit you belong or want to join</label>
+      <input type="text" name="Unit" required />
+
+      <label>Phone Number</label>
+      <input type="tel" name="Phone Number" required />
+
+      <label>Facebook Profile Link</label>
+      <input type="text" name="Facebook" />
+
+      <label>Twitter Handle</label>
+      <input type="text" name="Twitter" />
+
+      <label>TikTok</label>
+      <input type="text" name="TikTok" />
+
+      <label>Instagram</label>
+      <input type="text" name="Instagram" />
+
+      <label>Parent/Guardian Phone</label>
+      <input type="tel" name="Guardian Phone" required />
+
+      <button type="submit">Submit</button>
+      <p class="success" id="successMsg" style="display:none;">Form submitted successfully!</p>
+    </form>
+  </div>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwDJdNMsN6VGdDIXunUMjgvVjSzvpNd0XUZQfseYMKCf9Bg_xR8zblg9PpL87KaSOOuIQ/exec';
+    const form = document.getElementById('fellowshipForm');
+    const successMsg = document.getElementById('successMsg');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(scriptURL, {
+        method: 'POST',
+        body: new FormData(form)
+      })
+      .then(response => {
+        successMsg.style.display = 'block';
+        form.reset();
+      })
+      .catch(error => alert('Error!', error.message));
+    });
+  </script>
+</body>
+</html>
