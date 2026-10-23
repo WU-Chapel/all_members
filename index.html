@@ -1,124 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WIGWE UNIVERSITY CHAPEL</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f2f7ff;
-      padding: 1rem;
-      margin: 0;
-      background-color: rgb(7, 102, 64);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1a3d8f">
+    <title>Wigwe University Chapel | Membership Records</title>
 
-    .container {
-      max-width: 600px;
-      background: rgba(190, 234, 245, 0.941);
-      margin: 2rem auto;
-      padding: 2rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      border-radius: 10px;
-    }
-
-    h2 {
-      text-align: center;
-      color: #2c3e50;
-    }
-
-    label {
-      font-weight: 600;
-      display: block;
-      margin: 15px 0 5px;
-    }
-
-    input, select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 3px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
-    }
-
-    button {
-      width: 100%;
-      background: #2c3e50;
-      color: white;
-      padding: 12px;
-      margin-top: 20px;
-      border: none;
-      font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #1a242f;
-    }
-
-    .success {
-      color: green;
-      text-align: center;
-      margin-top: 1rem;
-    }
-  </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="validation.js" defer></script>
+    <script src="main.js" defer></script>
 </head>
 <body>
-  <div class="container">
-    <img src="WULogo.png" alt="WUC logo" style="display:block; margin-left:auto; margin-right:auto; width:200px;">
-    <h2 style="color: rgb(7, 90, 8);">WIGWE UNIVERSITY CHAPEL</h2>
-    <h3 style="text-align: center; color: rgb(231, 71, 27);">Where Academic Excellence Meets Spiritual Fire</h3>
-    <h5 style="text-align: center; color: rgb(231, 71, 27);">Membership Records System</h5>
-    <form id="fellowshipForm">
-      <label>First Name</label>
-      <input type="text" name="First Name" required />
+    <main class="container">
+        <header class="chapel-header">
+            <img src="assets/WULogo.png" alt="Wigwe University Chapel logo"
+                 class="chapel-logo">
 
-      <label>Middle Name</label>
-      <input type="text" name="Middle Name" />
+            <h1>WIGWE UNIVERSITY CHAPEL</h1>
+            <p class="tagline">Where Academic Excellence Meets Spiritual Fire</p>
+            <h2>Membership Records System</h2>
+        </header>
 
-      <label>Last Name (Surname)</label>
-      <input type="text" name="Last Name" required />
+        <form id="fellowshipForm" novalidate>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="First Name"
+                       autocomplete="given-name" required>
+            </div>
 
-      <label>College/Department</label>
-      <input type="text" name="Department" required />
+            <div class="form-group">
+                <label for="middleName">Middle Name</label>
+                <input type="text" id="middleName" name="Middle Name"
+                       autocomplete="additional-name">
+            </div>
 
-      <label>Date of Birth</label>
-      <input type="date" name="Date of Birth" required />
+            <div class="form-group">
+                <label for="lastName">Last Name (Surname)</label>
+                <input type="text" id="lastName" name="Last Name"
+                       autocomplete="family-name" required>
+            </div>
 
-      <label>Unit you belong or want to join</label>
-      <input type="text" name="Unit" required />
+            <div class="form-group">
+                <label for="department">College/Department</label>
+                <input type="text" id="department" name="Department" required>
+            </div>
 
-      <label>Phone Number</label>
-      <input type="tel" name="Phone Number" required />
+            <div class="form-group">
+                <label for="dateOfBirth">Date of Birth</label>
+                <input type="date" id="dateOfBirth" name="Date of Birth"
+                       autocomplete="bday" required>
+            </div>
 
-       <label>Parent/Guardian Phone</label>
-      <input type="tel" name="Guardian Phone" required />
+       
+            <div class="form-group">
+                <label for="unit">Unit you belong to or want to join</label>
+                <select id="unit" name="Unit" required>
+                    <option value="" disabled selected>Select your unit</option>
+                    <option value="Choir">Choir</option>
+                    <option value="Ushering">Ushering</option>
+                    <option value="Prayer">Prayer</option>
+                    <option value="Technical/Media">Technical/Media</option>
+                    <option value="Follow Up/Evangelism">Follow Up/Evangelism</option>
+                    <option value="Sunday School">Sunday School</option>
+                </select>
+            </div>
 
-      <button type="submit">Submit</button>
-      <p class="success" id="successMsg" style="display:none;">Form submitted successfully!</p>
-    </form>
-  </div>
 
-  <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwDJdNMsN6VGdDIXunUMjgvVjSzvpNd0XUZQfseYMKCf9Bg_xR8zblg9PpL87KaSOOuIQ/exec';
-    const form = document.getElementById('fellowshipForm');
-    const successMsg = document.getElementById('successMsg');
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="tel" id="phoneNumber" name="Phone Number"
+                       inputmode="numeric" autocomplete="tel"
+                       pattern="[0-9]{11}" maxlength="11"
+                       placeholder="e.g. 08012345678"
+                       title="Enter an 11-digit phone number" required>
+            </div>
 
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      fetch(scriptURL, {
-        method: 'POST',
-        body: new FormData(form)
-      })
-      .then(response => {
-        successMsg.style.display = 'block';
-        form.reset();
-      })
-      .catch(error => alert('Error!', error.message));
-    });
-  </script>
+            <div class="form-group">
+                <label for="guardianPhone">Parent/Guardian Phone</label>
+                <input type="tel" id="guardianPhone" name="Guardian Phone"
+                       inputmode="numeric" maxlength="11"
+                       pattern="[0-9]{11}"
+                       placeholder="e.g. 08012345678"
+                       title="Enter an 11-digit phone number" required>
+            </div>
+
+            <div id="formMessage" class="form-message"
+                 role="status" aria-live="polite" hidden></div>
+
+            <button type="submit" id="submitButton">Submit</button>
+        </form>
+    </main>
 </body>
 </html>
-

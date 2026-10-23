@@ -1,0 +1,253 @@
+
+/* ==========================================================================
+   Wigwe University Chapel — Membership Records
+   Responsive stylesheet
+   ========================================================================== */
+
+:root {
+    --primary-color: #1a3d8f;
+    --primary-dark: #122a63;
+    --accent-color: #f5a623;
+    --accent-light: #fdf1dd;
+    --background-color: #f4f6fb;
+    --surface-color: #ffffff;
+    --border-color: #d7dfef;
+    --text-color: #1c2333;
+    --text-muted: #6b7690;
+    --error-color: #d0362c;
+    --success-color: #176b3a;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+
+    --shadow-sm: 0 2px 6px rgba(26, 61, 143, 0.08);
+    --shadow-md: 0 10px 30px rgba(26, 61, 143, 0.12);
+
+    --transition: 0.2s ease;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 24px 12px;
+    min-height: 100vh;
+    background: var(--background-color);
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-color);
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 28px 20px 32px;
+    background: var(--surface-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+/* Header */
+
+.chapel-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.chapel-logo {
+    display: block;
+    width: 160px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto 20px;
+}
+
+h1 {
+    margin: 0 0 10px;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    line-height: 1.35;
+}
+
+.tagline {
+    margin: 0 0 22px;
+    color: #c66b00;
+    font-size: 0.95rem;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+h2 {
+    margin: 0;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    text-align: left;
+}
+
+/* Form fields */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="date"],
+select {
+    display: block;
+    width: 100%;
+    min-height: 50px;
+    padding: 13px 15px;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--surface-color);
+    color: var(--text-color);
+    font: inherit;
+    font-size: 1rem;
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+input::placeholder {
+    color: var(--text-muted);
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(26, 61, 143, 0.14);
+}
+
+input:disabled,
+select:disabled {
+    background: #f0f2f7;
+    cursor: not-allowed;
+}
+
+input:user-invalid {
+    border-color: var(--error-color);
+}
+
+/* Submit button */
+
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    min-height: 54px;
+    margin-top: 26px;
+    padding: 15px 20px;
+    border: none;
+    border-radius: var(--radius-md);
+    background: var(--primary-color);
+    color: #ffffff;
+    box-shadow: var(--shadow-sm);
+    font: inherit;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background-color var(--transition),
+        box-shadow var(--transition),
+        transform 0.1s ease;
+}
+
+button[type="submit"]:hover {
+    background: var(--primary-dark);
+    box-shadow: var(--shadow-md);
+}
+
+button[type="submit"]:active {
+    transform: scale(0.99);
+}
+
+button[type="submit"]:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 3px;
+}
+
+button[type="submit"]:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+/* Submission and validation messages */
+
+.form-message {
+    margin-top: 20px;
+    padding: 13px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.form-message[hidden] {
+    display: none;
+}
+
+.form-message.error {
+    border-color: var(--error-color);
+    background: #fff0ef;
+    color: #9d211b;
+}
+
+.form-message.success {
+    border-color: #a6d8b5;
+    background: #edf9f0;
+    color: var(--success-color);
+}
+
+.form-message.info {
+    border-color: var(--accent-color);
+    background: var(--accent-light);
+    color: var(--primary-dark);
+}
+
+/* Tablet and larger screens */
+
+@media (min-width: 600px) {
+    body {
+        padding: 40px 24px;
+    }
+
+    .container {
+        padding: 36px 40px 40px;
+    }
+
+    .chapel-logo {
+        width: 180px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Accessibility: respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
